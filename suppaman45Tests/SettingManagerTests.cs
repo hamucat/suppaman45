@@ -40,7 +40,7 @@ namespace suppaman45.Tests
                 }
             };
 
-            string filePath = "../../../TestFiles/SettingManager/期待される既定値.json";
+            string filePath = "../../../suppaman45Tests/TestFiles/SettingManager/期待される既定値.json";
             var settingManager = new SettingManager(filePath);
             var result = settingManager.LoadSettings();
 
@@ -115,7 +115,7 @@ namespace suppaman45.Tests
                 }
             };
 
-            string filepath = "../../../TestFiles/SettingManager/壊れたJson.json";
+            string filepath = "../../../suppaman45Tests/TestFiles/SettingManager/壊れたJson.json";
 
             //ファイルがない場合には失敗扱い
             if (!File.Exists(filepath)) { Assert.Fail(); }
@@ -137,7 +137,7 @@ namespace suppaman45.Tests
         [TestMethod()]
         public void SaveSettingsTest()
         {
-            var resultPath = "../../../TestFiles/SettingManager/出力Json.json";
+            var resultPath = "../../../suppaman45Tests/TestFiles/SettingManager/出力Json.json";
             File.Delete(resultPath);
 
             var settings = new UserSettings();
