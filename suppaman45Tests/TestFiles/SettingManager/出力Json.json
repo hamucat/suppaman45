@@ -1,0 +1,16 @@
+{
+  "ReadFileDir": "C:\\Users\\Hamu\\Documents\\生産指示\\",
+  "ReadFileExtention": ".xlsm",
+  "ReadSheetName": "ライン構成",
+  "NamedRange": "memTableHead",
+  "ReadIgnoreThrethold": 3,
+  "WriteFilepath": "C:\\Users\\Hamu\\Documents\\統計情報.xlsm",
+  "WriteSheetname": "Records",
+  "WriteTableName": "テーブル1",
+  "ArchiveDirPath": "C:\\Users\\Hamu\\Documents\\アーカイブ\\",
+  "ManageSheetName": "管理",
+  "UnprocessedDatesRangeName": "UnprocessedDatesRange",
+  "WaitTime": 5000,
+  "InvalidPatterns": [],
+  "ReplacePatterns": {}
+}

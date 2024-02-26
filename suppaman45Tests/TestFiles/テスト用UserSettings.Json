@@ -1,0 +1,24 @@
+{
+  "ReadFileDir": "../../../suppaman45Tests/TestFiles/ExcelDataReader/TestFiles",
+  "ReadFileExtention": ".xlsm",
+  "ReadSheetName": "ライン構成",
+  "NamedRange": "memTableHead",
+  "ReadIgnoreThrethold": 3,
+  "WriteFilepath": "../../../suppaman45Tests/TestFiles/ExcelDataWriter/Default.xlsm",
+  "WriteSheetname": "Records",
+  "WriteTableName": "テーブル1",
+  "ArchiveDirPath": "../../../suppaman45Tests/TestFiles/ArchiveManager/Archives/",
+  "ManageSheetName": "管理",
+  "UnprocessedDatesRange": "UnprocessedDatesRange",
+  "InvalidPatterns": [
+    "[\\x00 -\\x7F]",
+    "^[ぁ-ゞ]+$",
+    "[（）、]",
+    "^.*[^ァ-ン]・[^ァ-ン].*$"
+  ],
+  "ReplacePatterns": {
+    "ギタラクル": "イルミ",
+    "半蔵": "ハンゾー",
+    "ネテロ": "アイザック"
+  }
+}
