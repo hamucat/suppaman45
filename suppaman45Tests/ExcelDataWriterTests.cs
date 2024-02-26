@@ -27,7 +27,7 @@ namespace suppaman45.Tests
         {
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/AssertSuccess.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/AssertSuccess.xlsm";
 
             var excelDataWriter = new ExcelDataWriter(settings);
             excelDataWriter.Open();
@@ -47,7 +47,7 @@ namespace suppaman45.Tests
         {
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/FileNotFound.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/FileNotFound.xlsm";
 
             var excelDataWriter = new ExcelDataWriter(settings);
             Assert.ThrowsException<FileNotFoundException>(() => { excelDataWriter.Open(); });
@@ -64,7 +64,7 @@ namespace suppaman45.Tests
         {
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/WorksheetNotFound.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/WorksheetNotFound.xlsm";
 
             var excelDataWriter = new ExcelDataWriter(settings);
             Assert.ThrowsException<System.Runtime.InteropServices.COMException>(() => { excelDataWriter.Open(); });
@@ -84,7 +84,7 @@ namespace suppaman45.Tests
         {
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/AssertSuccess.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/AssertSuccess.xlsm";
 
             var excelDataWriter = new ExcelDataWriter(settings);
             excelDataWriter.Open();
@@ -105,7 +105,7 @@ namespace suppaman45.Tests
         {
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/TableNotFound.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/TableNotFound.xlsm";
 
             var excelDataWriter = new ExcelDataWriter(settings);
             excelDataWriter.Open();
@@ -166,7 +166,7 @@ namespace suppaman45.Tests
             };
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/TableEmpty.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/TableEmpty.xlsm";
 
             var excelDataWriter = new ExcelDataWriter(settings);
             excelDataWriter.XlApp.Visible = true;
@@ -232,7 +232,7 @@ namespace suppaman45.Tests
             };
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/DataExists.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/DataExists.xlsm";
 
             var excelDataWriter = new ExcelDataWriter(settings);
             excelDataWriter.XlApp.Visible = true;
@@ -269,7 +269,7 @@ namespace suppaman45.Tests
             var testDatas = new List<ExcelData>();
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/DataExists.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/DataExists.xlsm";
 
             var excelDataWriter = new ExcelDataWriter(settings);
             excelDataWriter.XlApp.Visible = true;
@@ -342,7 +342,7 @@ namespace suppaman45.Tests
             };
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/Sort_RandomData.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/Sort_RandomData.xlsm";
 
             var excelDataWriter = new ExcelDataWriter(settings);
             try
@@ -427,7 +427,7 @@ namespace suppaman45.Tests
             };
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/Sort_SortedData.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/Sort_SortedData.xlsm";
 
             var excelDataWriter = new ExcelDataWriter(settings);
             try
@@ -473,7 +473,7 @@ namespace suppaman45.Tests
         {
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/StoreDataInArchive.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/StoreDataInArchive.xlsm";
 
             if (Directory.Exists(settings.ArchiveDirPath))
             {
@@ -527,7 +527,7 @@ namespace suppaman45.Tests
         {
             var settingManager = new SettingManager("../../../suppaman45Tests/TestFiles/テスト用UserSettings.json");
             var settings = settingManager.LoadSettings();
-            settings.WriteFilepath = "../../../TestFiles/ExcelDataWriter/AllArchive.xlsm";
+            settings.WriteFilepath = "../../../suppaman45Tests/TestFiles/ExcelDataWriter/AllArchive.xlsm";
 
             if (Directory.Exists(settings.ArchiveDirPath))
             {
