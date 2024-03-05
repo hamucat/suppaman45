@@ -147,6 +147,7 @@ namespace suppaman45
             //テーブルが空なら何もしない
             if (WriteTable.DataBodyRange[1, 1].Value2 is null)
             {
+                logger.Debug("アーカイバ：テーブルが空");
                 return;
             }
 
@@ -217,6 +218,8 @@ namespace suppaman45
                 row++;
             }
 
+            logger.Debug("GetOldDatasAndRowNumber:row = {0}", row);
+            
             //新しいデータしかなかった時
             if (row == 1)
             {

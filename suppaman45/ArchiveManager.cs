@@ -10,10 +10,12 @@ namespace suppaman45
     public class ArchiveManager
     {
         UserSettings userSettings;
+        NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         public ArchiveManager(UserSettings userSettings)
         {
             this.userSettings = userSettings;
+            logger.Debug("ArchiveManager initiarize");
         }
 
         public void WriteToCSV(List<ExcelData> datas)
