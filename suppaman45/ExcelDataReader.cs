@@ -214,35 +214,41 @@ namespace suppaman45
             try
             {
                 Workbook workbook = xlapp.Workbooks.Open(Path.GetFullPath(userSettings.WriteFilepath));
-                dynamic worksheet = workbook.Sheets[userSettings.ManageSheetName];
-
-                if (!IsNamedRangeExists(worksheet, userSettings.ManageSheetName + "!" + userSettings.UnprocessedDatesRangeName))
+                try
                 {
-                    throw new NullReferenceException();
-                }
-                var namedRange = worksheet.Range(userSettings.UnprocessedDatesRangeName);
-                var firstRow = namedRange.Row;
-                var firstColumn = namedRange.Column;
+                    dynamic worksheet = workbook.Sheets[userSettings.ManageSheetName];
 
-
-                var dateCell = worksheet.Cells(firstRow, firstColumn);
-                var date = new DateTime();
-                var i = 0;
-
-                while (dateCell.Value2 != null && DateTime.TryParse(dateCell.Value.ToString(), out date))
-                {
-                    if (worksheet.Cells(firstRow + i, firstColumn + 1).Value2 == "ない")
+                    if (!IsNamedRangeExists(worksheet, userSettings.ManageSheetName + "!" + userSettings.UnprocessedDatesRangeName))
                     {
-                        unprocessedDates.Add(date);
+                        throw new NullReferenceException();
                     }
-                    i++;
-                    dateCell = worksheet.Cells(firstRow + i, firstColumn);
+                    var namedRange = worksheet.Range(userSettings.UnprocessedDatesRangeName);
+                    var firstRow = namedRange.Row;
+                    var firstColumn = namedRange.Column;
+
+
+                    var dateCell = worksheet.Cells(firstRow, firstColumn);
+                    var date = new DateTime();
+                    var i = 0;
+
+                    while (dateCell.Value2 != null && DateTime.TryParse(dateCell.Value.ToString(), out date))
+                    {
+                        if (worksheet.Cells(firstRow + i, firstColumn + 1).Value2 == "ない")
+                        {
+                            unprocessedDates.Add(date);
+                        }
+                        i++;
+                        dateCell = worksheet.Cells(firstRow + i, firstColumn);
+                    }
+                }
+                finally
+                {
+                    xlapp.DisplayAlerts = false;
+                    xlapp.Quit();
                 }
             }
             finally
             {
-                xlapp.DisplayAlerts = false;
-                xlapp.Quit();
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(xlapp);
             }
             return unprocessedDates;
