@@ -147,6 +147,7 @@ namespace suppaman45
             {
                 if (item.Key == emploeeName.Trim())
                 {
+                    logger.Trace("Replace: {0} → {1}", item.Key, item.Value);
                     return item.Value;
                 }
             }
