@@ -160,7 +160,7 @@ namespace suppaman45
             {
                 if (readDate == item.Date && newData.EmploeeName == item.EmploeeName)
                 {
-                    logger.Trace("IsDuplicate true {0} {1}", readDate.ToString("yyMMdd"), newData.EmploeeName);
+                    logger.Trace("ignore 重複除外にマッチ {0} {1}", readDate.ToString("yyMMdd"), newData.EmploeeName);
                     return true;
                 }
             }
@@ -174,7 +174,7 @@ namespace suppaman45
             {
                 if (System.Text.RegularExpressions.Regex.IsMatch(emploeeName, item))
                 {
-                    logger.Trace("Regex true {0} = {1}", emploeeName, item);
+                    logger.Trace("ignore 正規表現パターンにマッチ {0} = {1}", emploeeName, item);
                     return true;
                 }
             }
@@ -186,7 +186,7 @@ namespace suppaman45
         {
             if (columnHead == emploeeName)
             {
-                logger.Trace("LineName true {0}", emploeeName);
+                logger.Trace("ignore ライン名にマッチ {0}", emploeeName);
                 return true;
             }
             else

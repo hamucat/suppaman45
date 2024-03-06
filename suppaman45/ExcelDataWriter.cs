@@ -115,13 +115,13 @@ namespace suppaman45
             //Value2の中身はnullかdoubleかstring　doubleはnullでない　stringは””かもしれない
             if (firstRange.Value2 is null || firstRange.Value2 is string && !string.IsNullOrEmpty(firstRange.Value2))
             {
-                logger.Trace("GetStartRow() is {0}", firstRange.Row);
+                logger.Debug("テーブルが空 GetStartRow() is {0}", firstRange.Row);
                 return firstRange.Row;
             }
             else
             {
                 var lastRange = firstRange.End(XlDirection.xlDown);
-                logger.Trace("GetStartRow() is {0}", lastRange.Row + 1);
+                logger.Debug("データがある GetStartRow() is {0}", lastRange.Row + 1);
                 return lastRange.Row + 1;
             }
         }
@@ -147,7 +147,7 @@ namespace suppaman45
             //テーブルが空なら何もしない
             if (WriteTable.DataBodyRange[1, 1].Value2 is null)
             {
-                logger.Debug("アーカイバ：テーブルが空");
+                logger.Debug("テーブルが空");
                 return;
             }
 
@@ -218,7 +218,7 @@ namespace suppaman45
                 row++;
             }
 
-            logger.Debug("GetOldDatasAndRowNumber:row = {0}", row);
+            logger.Debug("指定日を超える最初の行 = {0}", row);
             
             //新しいデータしかなかった時
             if (row == 1)

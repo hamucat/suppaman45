@@ -21,7 +21,17 @@ namespace suppaman45
 
             //ない日を取得
             logger.Info("ない日を取得");
-            var fetchDates = excelDataReader.GetUnprocessedDateList();
+            List<DateTime> fetchDates;
+            try
+            {
+                fetchDates = excelDataReader.GetUnprocessedDateList();
+            }
+            catch (NullReferenceException ex)
+            {
+                logger.Error("ない日一覧の名前付き範囲が見つかりませんでした",ex);
+
+                return;
+            }
 
             //読み込み
             var ExcelDatas = new List<ExcelData>();
@@ -34,9 +44,15 @@ namespace suppaman45
                     logger.Info("完了 {0} 件(累計）", ExcelDatas.Count);
                 }
                 //ファイルがない
-                catch (FileNotFoundException ex) { logger.Error(ex); }
+                catch (FileNotFoundException ex)
+                {
+                    logger.Error(item.ToString() + "のファイルが見つかりませんでした",ex);
+                }
                 //シートがない
-                catch (NullReferenceException ex) { logger.Error(ex); }
+                catch (NullReferenceException ex)
+                {
+                    logger.Error("シート" + userSettings.ReadSheetName + "が見つかりませんでした。",ex);
+                }
             }
 
             var excelDataWriter = new ExcelDataWriter(userSettings);
@@ -67,11 +83,20 @@ namespace suppaman45
                 }
             }
             //ファイルがない
-            catch (FileNotFoundException ex) { logger.Error(ex); }
+            catch (FileNotFoundException ex)
+            {
+                logger.Error("書き込み用ファイルが見つかりませんでした",ex);
+            }
             //ファイルがつかまれてる
-            catch (IOException ex) { logger.Error(ex); }
+            catch (IOException ex)
+            {
+                logger.Error("ファイルがつかまれています",ex);
+            }
             //テーブルまたはシートがない
-            catch (System.Runtime.InteropServices.COMException ex) { logger.Error(ex); }
+            catch (System.Runtime.InteropServices.COMException ex)
+            {
+                logger.Error("テーブルまたはシートが見つかりませんでした",ex);
+            }
             finally
             {
                 System.Runtime.InteropServices.Marshal.FinalReleaseComObject(excelDataWriter.XlApp);
