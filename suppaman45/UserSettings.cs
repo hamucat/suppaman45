@@ -39,9 +39,14 @@ namespace suppaman45
         /// </summary>
         public void SetDefaultValues()
         {
+            //アスキーコード
             InvalidPatterns.Add("[\\x00 -\\x7F]");
+            //ひらがな
             InvalidPatterns.Add("^[ぁ-ゞ]+$");
-            InvalidPatterns.Add("[（）、・]");
+            //外国人名以外の中点含み
+            InvalidPatterns.Add("[^ァ - ヶー] + [^ァ - ヶー]+");
+            //区切り文字等
+            InvalidPatterns.Add("[（）、]");
         }
 
         public override bool Equals(object obj)
