@@ -34,11 +34,6 @@ namespace Parzan
             DataContext = vm;
         }
 
-        private void ReadFileDir_ReferenceButton_Click(object sender, RoutedEventArgs e)
-        {
-            vm.ReadFileDir = "hoge";
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //suppaman.exeの場所を確認する
@@ -86,6 +81,18 @@ namespace Parzan
             vm.ArchiveDirPath = userSettings.ArchiveDirPath;
             vm.ManageSheetName = userSettings.ManageSheetName;
             vm.UnprocessedDatesRangeName = userSettings.UnprocessedDatesRangeName;
+        }
+
+        //読み込みフォルダを開く
+        private void ReadFileDir_ReferenceButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            {
+                vm.ReadFileDir = dialog.FileName;
+            }
+            
         }
     }
 }
