@@ -41,8 +41,11 @@ namespace Parzan
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var path = "../suppaman45/settings.json";
-            if (!File.Exists("../suppman45/suppaman45.exe"))
+            //suppaman.exeの場所を確認する
+            //settings.jsonでないのはない可能性もあって、その場合それを作るのはこっちの仕事なので
+            var jsonPathManager = new JsonPathManager();
+            var path = jsonPathManager.LoadPath();
+            if (!File.Exists(path))
             {
                 MessageBox.Show("suppaman45.exeが見つかりませんでした。次に開くダイアログでsuppaman45.exeのある場所を選択してください。","Parzan",MessageBoxButton.OK,MessageBoxImage.Information);
                 var dialog = new OpenFileDialog();
@@ -51,6 +54,7 @@ namespace Parzan
                 if (dialog.ShowDialog() == true)
                 {
                     path = System.IO.Path.GetDirectoryName(dialog.FileName) + @"\settings.json";
+                    jsonPathManager.SavePath(path);
                 }else
                 {
                     this.Close();
