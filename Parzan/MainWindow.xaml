@@ -5,8 +5,122 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parzan"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Parzan" Height="620" Width="400">
+    <Window.Resources>
+        <Style x:Key="SubTitle" TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style x:Key="InnerBlock" TargetType="StackPanel">
+            <Setter Property="Margin" Value="10,0,0,0"/>
+        </Style>
+        <Style x:Key="stack_margin" TargetType="StackPanel">
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        <Style x:Key="Content" TargetType="Label">
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="Content_H" TargetType="Label">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Width" Value="210"/>
+        </Style>
+        <Style x:Key="TextBoxStyle_Long" TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="3,0,10,0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border BorderBrush="Black" BorderThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="TextBoxStyle_Short" TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="3,0,10,0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border BorderBrush="Black" BorderThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SansyoButton" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+        <Style x:Key="BigButton" TargetType="Button">
+            <Setter Property="Width" Value="172"/>
+            <Setter Property="Height" Value="50"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <StackPanel>
+            <Label Content="読み込み設定" Style="{StaticResource SubTitle}"/>
+            <StackPanel Style="{StaticResource InnerBlock}">
+                <Label Content="生産指示書のフォルダ" Style="{StaticResource Content}"/>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
+                    <TextBox Style="{StaticResource TextBoxStyle_Long}" Text="{Binding Path=ReadFileDir}"/>
+                    <Button Content="参照" Style="{StaticResource SansyoButton}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
+                    <Label Content="ファイルの拡張子" Style="{StaticResource Content_H}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
+                    <Label Content="シート名" Style="{StaticResource Content_H}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
+                    <Label Content="ライン名の見出し範囲の名前" Style="{StaticResource Content_H}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
+                    <Label Content="昼交代扱いするライン数の閾値" Style="{StaticResource Content_H}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
+                    <Label Content="未処理の日付リストの範囲のあるシート名" Style="{StaticResource Content_H}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
+                    <Label Content="未処理の日付リストの範囲の名前" Style="{StaticResource Content_H}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                </StackPanel>
+            </StackPanel>
+            <Label Content="書き込み設定" Style="{StaticResource SubTitle}"/>
+            <StackPanel Style="{StaticResource InnerBlock}">
+                <StackPanel Style="{StaticResource stack_margin}">
+                    <Label Content="書き込みファイルの場所"/>
+                    <StackPanel Orientation="Horizontal">
+                    <TextBox Style="{StaticResource TextBoxStyle_Long}"/>
+                        <Button Content="参照" Style="{StaticResource SansyoButton}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Style="{StaticResource stack_margin}" Orientation="Horizontal">
+                    <Label Content="書き込むシート名" Style="{StaticResource Content_H}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}" />
+                </StackPanel>
+                <StackPanel Style="{StaticResource stack_margin}" Orientation="Horizontal">
+                    <Label Content="テーブル名" Style="{StaticResource Content_H}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}" />
+                </StackPanel>
+                <StackPanel Style="{StaticResource stack_margin}" Orientation="Horizontal">
+                    <Button Content="除外ワード設定" Margin="0,0,10,0" Style="{StaticResource BigButton}"/>
+                    <Button Content="表記ゆれの置換" Margin="10,0,0,0" Style="{StaticResource BigButton}" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Style="{StaticResource stack_margin}">
+            <Button Content="保存" Width="366" Height="30" Padding="0" Margin="0,10,2,0"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
