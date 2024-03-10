@@ -20,9 +20,17 @@ namespace Parzan
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowVM vm;
         public MainWindow()
         {
             InitializeComponent();
+            vm = new MainWindowVM();
+            DataContext = vm;
+        }
+
+        private void ReadFileDir_ReferenceButton_Click(object sender, RoutedEventArgs e)
+        {
+            vm.ReadFileDir = "hoge";
         }
     }
 }
