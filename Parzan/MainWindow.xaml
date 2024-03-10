@@ -91,7 +91,7 @@
                     <Label Content="書き込みファイルの場所"/>
                     <StackPanel Orientation="Horizontal">
                         <TextBox Style="{StaticResource TextBoxStyle_Long}" Text="{Binding Path=WriteFilePath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                        <Button Content="参照" Style="{StaticResource SansyoButton}"/>
+                        <Button x:Name="WriteFilePath_ReferenceButton" Content="参照" Style="{StaticResource SansyoButton}" Click="WriteFilePath_ReferenceButton_Click"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Style="{StaticResource stack_margin}" Orientation="Horizontal">

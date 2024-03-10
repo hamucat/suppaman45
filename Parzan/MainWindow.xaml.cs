@@ -90,9 +90,20 @@ namespace Parzan
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
             {
-                vm.ReadFileDir = dialog.FileName;
+                vm.ReadFileDir = dialog.FileName + "\\";
             }
             
+        }
+
+        //書き込みファイルを開く
+        private void WriteFilePath_ReferenceButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
+            dialog.IsFolderPicker= false;
+            if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            {
+                vm.WriteFilePath = dialog.FileName;
+            }
         }
     }
 }
