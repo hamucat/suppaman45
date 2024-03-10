@@ -164,7 +164,7 @@ namespace Parzan
                 if (_ArchiveDirPath != value)
                 {
                     _ArchiveDirPath = value;
-                    OnPropertyChanged(nameof(_ArchiveDirPath));
+                    OnPropertyChanged(nameof(ArchiveDirPath));
                 }
             }
         }
