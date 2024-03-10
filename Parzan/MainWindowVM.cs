@@ -74,7 +74,8 @@ namespace Parzan
         public string Namedrange
         {
             get { return _NamedRange; }
-            set {
+            set
+            {
                 if (_NamedRange != value)
                 {
                     _NamedRange = value;
@@ -109,7 +110,7 @@ namespace Parzan
             get { return _WriteFilePath; }
             set
             {
-                if (_WriteFilePath!=value)
+                if (_WriteFilePath != value)
                 {
                     _WriteFilePath = value;
                     OnPropertyChanged(nameof(WriteFilePath));
@@ -126,7 +127,7 @@ namespace Parzan
             get { return _WriteSheetName; }
             set
             {
-                if (_WriteSheetName!=value)
+                if (_WriteSheetName != value)
                 {
                     _WriteSheetName = value;
                     OnPropertyChanged($"{nameof(WriteSheetName)}");
@@ -160,7 +161,7 @@ namespace Parzan
             get { return _ArchiveDirPath; }
             set
             {
-                if (_ArchiveDirPath!=value)
+                if (_ArchiveDirPath != value)
                 {
                     _ArchiveDirPath = value;
                     OnPropertyChanged(nameof(_ArchiveDirPath));
@@ -194,7 +195,7 @@ namespace Parzan
             get { return _UnprocessedDatesRangeName; }
             set
             {
-                if (_UnprocessedDatesRangeName !=value)
+                if (_UnprocessedDatesRangeName != value)
                 {
                     _UnprocessedDatesRangeName = value;
                     OnPropertyChanged(nameof(UnprocessedDatesRangeName));

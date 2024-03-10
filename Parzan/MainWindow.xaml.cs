@@ -1,5 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Parzan.Properties;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +25,8 @@ namespace Parzan
     public partial class MainWindow : Window
     {
         MainWindowVM vm;
+        suppaman45.UserSettings userSettings;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +37,48 @@ namespace Parzan
         private void ReadFileDir_ReferenceButton_Click(object sender, RoutedEventArgs e)
         {
             vm.ReadFileDir = "hoge";
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var path = "../suppaman45/settings.json";
+            if (!File.Exists("../suppman45/suppaman45.exe"))
+            {
+                MessageBox.Show("suppaman45.exeが見つかりませんでした。次に開くダイアログでsuppaman45.exeのある場所を選択してください。","Parzan",MessageBoxButton.OK,MessageBoxImage.Information);
+                var dialog = new OpenFileDialog();
+                dialog.Title = "suppaman45.exeはどこにありますか？";
+                dialog.FileName = "suppaman45.exe";
+                if (dialog.ShowDialog() == true)
+                {
+                    path = System.IO.Path.GetDirectoryName(dialog.FileName) + @"\settings.json";
+                }else
+                {
+                    this.Close();
+                    return;
+                }
+            }
+
+            var settingManager = new suppaman45.SettingManager(path);
+            
+            //settings.jsonがなければつくる
+            if (!File.Exists(path))
+            {
+                settingManager.SaveSettings(userSettings = new suppaman45.UserSettings());
+            }
+
+            userSettings = settingManager.LoadSettings();
+
+            vm.ReadFileDir = userSettings.ReadFileDir;
+            vm.ReadFileExtention = userSettings.ReadFileExtention;
+            vm.ReadSheetName = userSettings.ReadSheetName;
+            vm.Namedrange = userSettings.NamedRange;
+            vm.ReadIgnoreThreshold = userSettings.ReadIgnoreThrethold;
+            vm.WriteFilePath = userSettings.WriteFilepath;
+            vm.WriteSheetName = userSettings.WriteSheetname;
+            vm.WriteTableName = userSettings.WriteTableName;
+            vm.ArchiveDirPath = userSettings.ArchiveDirPath;
+            vm.ManageSheetName = userSettings.ManageSheetName;
+            vm.UnprocessedDatesRangeName = userSettings.UnprocessedDatesRangeName;
         }
     }
 }

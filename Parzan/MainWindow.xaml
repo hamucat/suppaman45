@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parzan"
         mc:Ignorable="d"
-        Title="Parzan" Height="680" Width="400">
+        Title="Parzan" Height="680" Width="400" Loaded="Window_Loaded">
     <Window.DataContext>
         <local:MainWindowVM />
     </Window.DataContext>
