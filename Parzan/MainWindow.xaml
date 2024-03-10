@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parzan"
         mc:Ignorable="d"
-        Title="Parzan" Height="620" Width="400">
+        Title="Parzan" Height="680" Width="400">
     <Window.DataContext>
         <local:MainWindowVM />
     </Window.DataContext>
@@ -62,27 +62,27 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
                     <Label Content="ファイルの拡張子" Style="{StaticResource Content_H}"/>
-                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}" Text="{Binding Path=ReadFileExtention,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
                     <Label Content="シート名" Style="{StaticResource Content_H}"/>
-                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}" Text="{Binding Path=ReadSheetName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
                     <Label Content="ライン名の見出し範囲の名前" Style="{StaticResource Content_H}"/>
-                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}" Text="{Binding Path=Namedrange,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
                     <Label Content="昼交代扱いするライン数の閾値" Style="{StaticResource Content_H}"/>
-                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}" Text="{Binding Path=ReadIgnoreThreshold,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
                     <Label Content="未処理の日付リストの範囲のあるシート名" Style="{StaticResource Content_H}"/>
-                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}" Text="{Binding Path=ManageSheetName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Style="{StaticResource stack_margin}">
                     <Label Content="未処理の日付リストの範囲の名前" Style="{StaticResource Content_H}"/>
-                    <TextBox Style="{StaticResource TextBoxStyle_Short}"/>
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}" Text="{Binding Path=UnprocessedDatesRangeName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </StackPanel>
             <Label Content="書き込み設定" Style="{StaticResource SubTitle}"/>
@@ -90,17 +90,24 @@
                 <StackPanel Style="{StaticResource stack_margin}">
                     <Label Content="書き込みファイルの場所"/>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Style="{StaticResource TextBoxStyle_Long}"/>
+                        <TextBox Style="{StaticResource TextBoxStyle_Long}" Text="{Binding Path=WriteFilePath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                         <Button Content="参照" Style="{StaticResource SansyoButton}"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Style="{StaticResource stack_margin}" Orientation="Horizontal">
                     <Label Content="書き込むシート名" Style="{StaticResource Content_H}"/>
-                    <TextBox Style="{StaticResource TextBoxStyle_Short}" />
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}" Text="{Binding Path=WriteSheetName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Style="{StaticResource stack_margin}" Orientation="Horizontal">
                     <Label Content="テーブル名" Style="{StaticResource Content_H}"/>
-                    <TextBox Style="{StaticResource TextBoxStyle_Short}" />
+                    <TextBox Style="{StaticResource TextBoxStyle_Short}" Text="{Binding Path=WriteTableName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource stack_margin}">
+                    <Label Content="アーカイブの保存先フォルダ" />
+                    <StackPanel Orientation="Horizontal">
+                    <TextBox Style="{StaticResource TextBoxStyle_Long}" Text="{Binding Path=ArchiveDirPath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button Content="参照" Style="{StaticResource SansyoButton}"/>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel Style="{StaticResource stack_margin}" Orientation="Horizontal">
                     <Button Content="除外ワード設定" Margin="0,0,10,0" Style="{StaticResource BigButton}"/>
