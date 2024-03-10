@@ -106,7 +106,7 @@
                     <Label Content="アーカイブの保存先フォルダ" />
                     <StackPanel Orientation="Horizontal">
                     <TextBox Style="{StaticResource TextBoxStyle_Long}" Text="{Binding Path=ArchiveDirPath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                        <Button Content="参照" Style="{StaticResource SansyoButton}"/>
+                        <Button x:Name="ArchiveDirPath_ReferenceButton" Content="参照" Style="{StaticResource SansyoButton}" Click="ArchiveDirPath_ReferenceButton_Click"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Style="{StaticResource stack_margin}" Orientation="Horizontal">

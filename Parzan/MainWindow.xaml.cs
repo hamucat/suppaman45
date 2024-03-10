@@ -105,5 +105,16 @@ namespace Parzan
                 vm.WriteFilePath = dialog.FileName;
             }
         }
+
+        //アーカイブフォルダの選択
+        private void ArchiveDirPath_ReferenceButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            {
+                vm.ArchiveDirPath = dialog.FileName + "\\";
+            }
+        }
     }
 }
