@@ -44,7 +44,7 @@ namespace suppaman45
             //ひらがな
             InvalidPatterns.Add("^[ぁ-ゞ]+$");
             //外国人名以外の中点含み
-            InvalidPatterns.Add("[^ァ - ヶー] + [^ァ - ヶー]+");
+            InvalidPatterns.Add("^.*[^ァ-ン]・[^ァ-ン].*$");
             //区切り文字等
             InvalidPatterns.Add("[（）、]");
         }
