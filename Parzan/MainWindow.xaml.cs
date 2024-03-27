@@ -116,5 +116,11 @@ namespace Parzan
                 vm.ArchiveDirPath = dialog.FileName + "\\";
             }
         }
+
+        private void InvalidPattern_SettingButton_Click(object sender, RoutedEventArgs e)
+        {
+            var regexWindow = new RegexWindow(userSettings);
+            regexWindow.ShowDialog();
+        }
     }
 }

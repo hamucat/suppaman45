@@ -110,8 +110,8 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Style="{StaticResource stack_margin}" Orientation="Horizontal">
-                    <Button Content="除外ワード設定" Margin="0,0,10,0" Style="{StaticResource BigButton}"/>
-                    <Button Content="表記ゆれの置換" Margin="10,0,0,0" Style="{StaticResource BigButton}" />
+                    <Button x:Name="InvalidPattern_SettingButton" Content="除外ワード設定" Margin="0,0,10,0" Style="{StaticResource BigButton}" Click="InvalidPattern_SettingButton_Click"/>
+                    <Button x:Name="ReplacePattern_SettingButton" Content="表記ゆれの置換" Margin="10,0,0,0" Style="{StaticResource BigButton}" />
                 </StackPanel>
             </StackPanel>
             <StackPanel Style="{StaticResource stack_margin}">
